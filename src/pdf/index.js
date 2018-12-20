@@ -1,18 +1,23 @@
-import puppeteer from 'puppeteer';
+import BaseClass from '../base/index';
 
-const createPDF = async () => {
-    try {
-        // md 目前只支持绝对路径
-        const browser = await puppeteer.launch({
-            executablePath: 'src/chromium/Chromium.app/Contents/MacOS/Chromium',
-        });
-        const page = await browser.newPage();
-        await page.goto('https://music.163.com');
-        await page.pdf({ path: 'src/images/misuc.pdf', format: 'A4' });
-        await browser.close();
-    } catch (err) {
-        console.error('createPDF error', err);
+class CreatePDF extends BaseClass {
+    constructor(props) {
+        super(props);
+        this.actionList.push(this.createPDFFn);
     }
-};
 
-export default createPDF;
+    /**
+     * 创建pdf方法
+     */
+    async createPDFFn() {
+        try {
+            const page = await this.browser.newPage();
+            await page.goto('https://music.163.com');
+            await page.pdf({ path: 'src/data/misuc.pdf', format: 'A4' });
+        } catch (err) {
+            console.error('createPDFFn error', err);
+        }
+    }
+}
+
+export default CreatePDF;
