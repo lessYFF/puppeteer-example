@@ -1,0 +1,23 @@
+{
+  "name": "puppeteer-example",
+  "version": "1.0.0",
+  "description": "the example of puppeteer",
+  "author": "Bruce yan",
+  "private": true,
+  "scripts": {
+    "start": "node start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lessYFF/puppeteer-example.git"
+  },
+  "devDependencies": {
+    "puppeteer": "^1.11.0",
+    "pdf-merge": "^1.1.0",
+    "inquirer": "^6.2.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-latest-node": "^0.4.0",
+    "babel-preset-stage-3": "^6.24.1"
+  },
+  "dependencies": {}
+}
