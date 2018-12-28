@@ -8,7 +8,7 @@ const Pdf = new CreatePDF({ headless: true });
 const Spider = new CreateSpider({ headless: true });
 const Command = new CommandLine({ headless: true });
 
-/*Pdf.init();
-Screen.init();*/
+Pdf.init();
+Screen.init();
 Spider.init();
-//Command.init();
+Command.init();

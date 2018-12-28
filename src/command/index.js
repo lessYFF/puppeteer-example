@@ -1,6 +1,17 @@
-#!/usr/bin/env node
-import program from 'commander';
+import command from 'inquirer';
 import BaseClass from '../base/index';
+// default command prompt
+const questions = [{
+        type: 'input',
+        name: 'webURI',
+        default: () => { return 'https://music.163.com' },
+        message: 'Please add Web Site what you want?'
+    }, {
+        type: 'input',
+        name: 'type',
+        default: () => { return 'pdf' },
+        message: 'pdf or screen shot?'
+    }];
 
 class CommandLine extends BaseClass {
     constructor(props) {
@@ -14,17 +25,15 @@ class CommandLine extends BaseClass {
     async handleByCommandFn() {
         try {
             const page = await this.browser.newPage();
-            program.option('-p, --url', 'Add Web Site which you want?')
-              .option('-p, --type', 'pdf or png ?')
-              .parse(process.argv);
+            const answers = await command.prompt(questions);
 
-            if (program.url) {
-                await page.goto(program.url);
+            if (answers.webURI) {
+                await page.goto(answers.webURI);
             }
-            if (program.type === 'pdf') {
-                await page.pdf({ path: 'src/data/commnder.pdf', format: 'A4' });
+            if (answers.type === 'pdf') {
+                await page.pdf({ path: 'src/data/commander.pdf', format: 'A4' });
             } else {
-                await page.screenshot({ path: 'src/data/commnder.pngt', fullPage: true });
+                await page.screenshot({ path: 'src/data/commander.pngt', fullPage: true });
             }
         } catch (err) {
             console.error('handleByCommandFn error', err);
