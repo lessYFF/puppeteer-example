@@ -55,11 +55,11 @@ class CreateSpider extends BaseClass {
 
                     Array.from(document.querySelectorAll('body > div')).forEach(item => {
                         if (item.id === 'content' || (isFirstPage && item.id === 'sidebar')) return;
-                        if (item.style) item.style = 'display:none';
+                        if (typeof item === 'object' && item.style) item.style = 'display:none';
                     });
 
                     let commentDom = document.querySelector('#留言');
-                    if (commentDom.style) commentDom.style = 'display:none';
+                    if (typeof commentDom === 'object' && commentDom.style) commentDom.style = 'display:none';
                 }, isFirstPage);
 
                 await page.pdf({

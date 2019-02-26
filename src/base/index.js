@@ -7,7 +7,7 @@ class BaseClass {
         this.configOptions = Object.assign({
             slowMo: 1000,
             headless: false,
-            executablePath: 'src/chromium/Chromium.app/Contents/MacOS/Chromium',
+            // executablePath: 'src/chromium/Chromium.app/Contents/MacOS/Chromium',
         }, options); // 构建浏览器配置
         this.init = this.init.bind(this);
     }

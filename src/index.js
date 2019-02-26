@@ -10,5 +10,5 @@ const Command = new CommandLine({ headless: true });
 
 Pdf.init();
 Screen.init();
-Spider.init();
 Command.init();
+Spider.init();
